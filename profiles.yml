@@ -1,0 +1,24 @@
+vignesh-snowflake-db:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: xy96019.ap-south-1
+
+      # User/password auth
+      user: datatoinsight
+      password: Test@123
+
+      role: FIVETRAN_ROLE
+      database: D2I_TRAINING
+      warehouse: DATA_TO_INSIGHTS
+      schema: S3
+      threads: 1
+      client_session_keep_alive: False
+      query_tag: [anything]
+
+      # optional
+      connect_retries: 0 # default 0
+      connect_timeout: 10 # default: 10
+      retry_on_database_errors: False # default: false 
+      retry_all: False  # default: false
