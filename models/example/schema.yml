@@ -19,6 +19,8 @@ models:
                 - not_null
     - name: sf_customer_purchases
 
+    - name: dimproduct
+
     - name: cumulative_orders_by_date
 
     - name : incremental_time
