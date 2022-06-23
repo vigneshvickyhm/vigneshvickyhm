@@ -1,4 +1,4 @@
-{{ config(materialized='incremental') }}
+{{ config(materialized='table') }}
 
 select 
 
@@ -17,6 +17,6 @@ from "DATA_TO_INSIGHTS"."DATA_TO_INSIGHTS_TRAINING"."STG_DIMPRODUCT"
 
 {% if is_incremental() %}
   -- this filter will only be applied on an incremental run
-  where to_date(_FIVETRAN_SYNCED) > (select max(to_date(_FIVETRAN_SYNCED)) from {{ this }})
+  where cast(_FIVETRAN_SYNCED as date) > (select max(cast(_FIVETRAN_SYNCED as date)) from {{ this }})
 {% endif %}
-
+ 
